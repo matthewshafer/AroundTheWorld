@@ -1,0 +1,7 @@
+I just started work on this, so there aren't any real features yet and a bunch of stuff will probably change!
+
+
+What this aims to do is make it easy to do distance calculations between two points.
+Currently all that is supported is signed decimal latitude/longitude points
+
+You currently can't change the units that it returns.  I plan on changing that really soon.
