@@ -98,7 +98,7 @@ class AroundTheWorld
 			// we could just do the sin once and then raise that to the power of 2.
 			$a = pow(sin($tLat/2), 2) + ((cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * pow(sin($tLon/2), 2)));
 			// we could also move this up into the above line and then save creating another variable
-			$c = 2 * asin(sqrt($a));
+			$c = 2 * asin(min(1, sqrt($a)));
 			
 			// converting to miles
 			$return = 3963.0 * $c;
