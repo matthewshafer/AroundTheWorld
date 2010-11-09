@@ -2,10 +2,29 @@
 
 class AroundTheWorld
 {
+	private $radius = null;
+	private $radType = null;
 
-	public function __construct()
+	public function __construct($radMod = "M", $customRad = 3963.0)
 	{
-		
+		switch($radMod)
+		{
+			case "M":
+				$this->radius = 3963.0;
+				break;
+			case "KM":
+				$this->radius = 6371.009;
+				break;
+			case "NM":
+				$this->radius = 6371.009 * 0.539956803;
+				break;
+			case "F":
+				$this->radius = 3963.0 * 5280;
+				break;
+			case "C":
+				$this->radius = $customRad;
+				break;
+		}
 	}
 	
 	
@@ -64,7 +83,7 @@ class AroundTheWorld
 			$lon2 = deg2rad($lon2);
 			
 			
-			$return = 3963.0 * acos((sin($lat1) * sin($lat2)) + (cos($lat1) * cos($lat2) * cos($lon2 - $lon1)));
+			$return = $this->radius * acos((sin($lat1) * sin($lat2)) + (cos($lat1) * cos($lat2) * cos($lon2 - $lon1)));
 		}
 		else
 		{
@@ -101,7 +120,7 @@ class AroundTheWorld
 			$c = 2 * asin(min(1, sqrt($a)));
 			
 			// converting to miles
-			$return = 3963.0 * $c;
+			$return = $this->radius * $c;
 		}
 		else
 		{
