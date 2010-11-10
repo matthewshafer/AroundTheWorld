@@ -46,10 +46,10 @@ class AroundTheWorld
 		
 		if(is_float($lat1) && is_float($lon1) && is_float($lat2) && is_float($lon2))
 		{
-			$x = 69.1 * ($lat2 - $lat1);
-			$y = 53.0 * ($lon2 - $lon1);
+			$x = deg2rad($lat2 - $lat1);
+			$y = deg2rad($lon2 - $lon1) * cos(deg2rad($lat1));
 			
-			$return = sqrt($x * $x + $y * $y);
+			$return = $this->radius * sqrt(pow($x, 2) + pow($y, 2));
 		}
 		else
 		{
