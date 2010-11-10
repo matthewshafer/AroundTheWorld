@@ -3,9 +3,19 @@
 class AroundTheWorld
 {
 	private $radius = null;
-	private $radType = null;
 
-	public function __construct($radMod = "M", $customRad = 3963.0)
+	/**
+	 * __construct function.
+	 * 
+	 * Gets called whtn the AroundTheWorld object is created.  You can create the object with no parameters, which means it defaults to miles
+	 * you can specify a specific unit of measurement or you can send your own.
+	 *
+	 * @access public
+	 * @param string $radMod. (default: "M")
+	 * @param float $customRad. (default: 3963.0)
+	 * @return void
+	 */
+	public function __construct($radMod = "MI", $customRad = 3963.0)
 	{
 		switch($radMod)
 		{
@@ -36,6 +46,7 @@ class AroundTheWorld
 	 * 
 	 * The accuracy with this function isnt super great, it has something like a 10% error.
 	 * Upside is it should be quite a bit faster than the more complicated function
+	 *
 	 * @access public
 	 * @param float $lat1
 	 * @param float $lon1
@@ -66,7 +77,7 @@ class AroundTheWorld
 	 * greatCircleDistanceCalculationDecimal function.
 	 * 
 	 * The accuracy with this function should be relatively accurate, it uses the great circle distance formula
-	 
+	 *
 	 * @access public
 	 * @param float $lat1
 	 * @param float $lon1
@@ -100,6 +111,7 @@ class AroundTheWorld
 	 * haversineCalculationDecimal function.
 	 * 
 	 * This is the most accurate method for finding the distance between two points
+	 *
 	 * @access public
 	 * @param float $lat1
 	 * @param float $lon1
