@@ -33,6 +33,22 @@ printf("%f Kilometers\n", $world->haversineCalculationDecimal(37.76637243960179,
 
 printf("%f Kilometers invalid\n", $world->haversineCalculationDecimal("37.76637243960179", -122.46734619140625, 37.8813571797486, -122.255859375));
 
+printf("Now in Feet\n");
+
+$world = new AroundTheWorld("FT");
+
+printf("%f Feet\n", $world->simpleLocationCalculationDecimal(37.76637243960179, -122.46734619140625, 37.8813571797486, -122.255859375));
+
+printf("%f Feet invalid\n", $world->simpleLocationCalculationDecimal("37.76637243960179", -122.46734619140625, 37.8813571797486, -122.255859375));
+
+printf("%f Feet\n", $world->greatCircleDistanceCalculationDecimal(37.76637243960179, -122.46734619140625, 37.8813571797486, -122.255859375));
+
+printf("%f Feet invalid\n", $world->greatCircleDistanceCalculationDecimal("37.76637243960179", -122.46734619140625, 37.8813571797486, -122.255859375));
+
+printf("%f Feet\n", $world->haversineCalculationDecimal(37.76637243960179, -122.46734619140625, 37.8813571797486, -122.255859375));
+
+printf("%f Feet invalid\n", $world->haversineCalculationDecimal("37.76637243960179", -122.46734619140625, 37.8813571797486, -122.255859375));
+
 
 
 ?>
