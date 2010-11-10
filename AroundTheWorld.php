@@ -9,8 +9,11 @@ class AroundTheWorld
 	{
 		switch($radMod)
 		{
-			case "M":
+			case "MI":
 				$this->radius = 3963.0;
+				break;
+			case "M":
+				$this->radius = 6371009;
 				break;
 			case "KM":
 				$this->radius = 6371.009;
@@ -18,10 +21,10 @@ class AroundTheWorld
 			case "NM":
 				$this->radius = 6371.009 * 0.539956803;
 				break;
-			case "F":
+			case "FT":
 				$this->radius = 3963.0 * 5280;
 				break;
-			case "C":
+			case "CUSTOM":
 				$this->radius = $customRad;
 				break;
 		}
