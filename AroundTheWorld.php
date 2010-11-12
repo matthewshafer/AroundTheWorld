@@ -58,7 +58,7 @@ class AroundTheWorld
 	{
 		$return = 0.0;
 		
-		if(is_float($lat1) && is_float($lon1) && is_float($lat2) && is_float($lon2))
+		if(is_numeric($lat1) && is_numeric($lon1) && is_numeric($lat2) && is_numeric($lon2))
 		{
 			$x = deg2rad($lat2 - $lat1);
 			$y = deg2rad($lon2 - $lon1) * cos(deg2rad($lat1));
@@ -89,7 +89,7 @@ class AroundTheWorld
 	{
 		$return = 0.0;
 		
-		if(is_float($lat1) && is_float($lon1) && is_float($lat2) && is_float($lon2))
+		if(is_numeric($lat1) && is_numeric($lon1) && is_numeric($lat2) && is_numeric($lon2))
 		{
 			$lat1 = deg2rad($lat1);
 			$lon1 = deg2rad($lon1);
@@ -123,7 +123,7 @@ class AroundTheWorld
 	{
 		$return = 0.0;
 		
-		if(is_float($lat1) && is_float($lon1) && is_float($lat2) && is_float($lon2))
+		if(is_numeric($lat1) && is_numeric($lon1) && is_numeric($lat2) && is_numeric($lon2))
 		{
 			$tLat = deg2rad($lat2 - $lat1);
 			$tLon = deg2rad($lon2 - $lon1);
@@ -156,19 +156,25 @@ class AroundTheWorld
 	 */
 	public function dmsToSignedDecimal($d, $m, $s = 0.0)
 	{
-		// figured i would cast it since d shouldn't be an int and not a float but by the end this should be a float
-		(float)$finalValue = $d;
-		// minutes are 1/60's of a degree and seconds are 1/60 of a minute(so they are 1/60 * 1/60 of a degree, which is why we get 1/3600)
-		$ms = ($m * (1/60)) + ($s * (1/3600));
+		// i figured i would make the error case something pretty large.  if anyone has any other ideas please let me know
+		$finalValue = 500.0;
+		$ms = 0.0;
 		
-		if($d >= 0)
+		if(is_numeric($d) && is_numeric($m) && is_numeric($s))
 		{
-			$finalValue += $ms;
-		}
-		// if the degrees happens to be less than 0 we need to subtract the minutes and seconds 
-		else
-		{
-			$finalValue -= $ms;
+			$finalValue = $d;
+			// minutes are 1/60's of a degree and seconds are 1/60 of a minute(so they are 1/60 * 1/60 of a degree, which is why we get 1/3600)
+			$ms = ($m * (1/60)) + ($s * (1/3600));
+			if($d >= 0)
+			{
+				$finalValue += $ms;
+			}
+			// if the degrees happens to be less than 0 we need to subtract the minutes and seconds 
+			else
+			{
+				$finalValue -= $ms;
+			}
+		
 		}
 		
 		return $finalValue;
