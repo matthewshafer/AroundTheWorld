@@ -144,6 +144,35 @@ class AroundTheWorld
 		
 		return $return;
 	}
+	
+	/**
+	 * dmsToSignedDecimal function.
+	 * 
+	 * @access public
+	 * @param float $degrees
+	 * @param float $minutes
+	 * @param float $seconds. (default: 0)
+	 * @return float containing the decimal degrees
+	 */
+	public function dmsToSignedDecimal($d, $m, $s = 0.0)
+	{
+		// figured i would cast it since d shouldn't be an int and not a float but by the end this should be a float
+		(float)$finalValue = $d;
+		// minutes are 1/60's of a degree and seconds are 1/60 of a minute(so they are 1/60 * 1/60 of a degree, which is why we get 1/3600)
+		$ms = ($m * (1/60)) + ($s * (1/3600));
+		
+		if($d >= 0)
+		{
+			$finalValue += $ms;
+		}
+		// if the degrees happens to be less than 0 we need to subtract the minutes and seconds 
+		else
+		{
+			$finalValue -= $ms;
+		}
+		
+		return $finalValue;
+	}
 
 }
 ?>

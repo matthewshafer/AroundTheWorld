@@ -50,5 +50,14 @@ printf("%f Feet\n", $world->haversineCalculationDecimal(37.76637243960179, -122.
 printf("%f Feet invalid\n", $world->haversineCalculationDecimal("37.76637243960179", -122.46734619140625, 37.8813571797486, -122.255859375));
 
 
+printf("Testing the DMS conversion\n");
+
+$world = new AroundTheWorld();
+
+printf("50 seconds 29 minutes and 50.5 seconds to decimal is %f\n", $world->dmsToSignedDecimal(50, 29, 50.5));
+printf("-50 seconds 29 minutes and 50.5 seconds to decimal is %f\n", $world->dmsToSignedDecimal(-50, 29, 50.5));
+printf("-50 seconds 29 minutes to decimal is %f\n", $world->dmsToSignedDecimal(-50, 29));
+
+
 
 ?>
